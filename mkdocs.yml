@@ -49,6 +49,11 @@ nav:
   - Configuration: configuration.md
   - Integrations: integrations.md
   - Examples: examples.md
+  - Use Cases:
+      - Overview: usecases/index.md
+      - AI Travel Planner: usecases/use-case-1.md
+      - Workflow Fault Testing: usecases/use-case-2.md
+      - Evaluation and Release Gate: usecases/use-case-3.md
   - Troubleshooting: troubleshooting.md
   - Limitations: limitations.md
   - Roadmap: roadmap.md

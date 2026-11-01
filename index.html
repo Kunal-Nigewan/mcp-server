@@ -708,20 +708,19 @@
 
 
 <!-- =======================================================
-     USE CASE
+     USE CASE 01: AI TRAVEL PLANNER
 ======================================================== -->
 
 <section
   id="use-cases"
   class="section use-case-section"
 >
-
   <div class="section-container">
 
+    <!-- Header -->
+
     <div class="use-case-header">
-
       <div>
-
         <span class="eyebrow">
           USE CASE 01
         </span>
@@ -734,20 +733,67 @@
           A representative workflow demonstrating how the MCP server
           can be used to analyze and test an agentic workflow.
         </p>
-
       </div>
 
       <span class="simulation-badge">
         SIMULATED WORKFLOW
       </span>
+    </div>
+
+    <!-- Explanation for new visitors -->
+
+    <div class="use-case-explanation">
+
+      <p>
+        Imagine planning a three-day trip to Goa. Instead of manually
+        checking flights, hotels, weather forecasts, and activities
+        separately, an AI-powered workflow can organize these tasks
+        into a sequence of steps.
+      </p>
+
+      <p>
+        <strong>Step 1 — Tell the planner what you need.</strong>
+        The user's request becomes the input for the workflow.
+      </p>
+
+      <p>
+        <strong>Step 2 — Gather travel information.</strong>
+        The workflow searches for flights and hotels and checks
+        the weather to gather information for the trip.
+      </p>
+
+
+
+      <p>
+
+        <strong>Step 3 — Build the itinerary.</strong>
+        The gathered results are combined to create a proposed
+        itinerary for the trip.
+
+      </p>
+
+      <p>
+        <strong>Step 4 — Analyze and test the workflow.</strong>
+        AgenticLens can help analyze workflow behavior and available
+        evidence. Agentic Chaos can run controlled fault experiments
+        to investigate how the workflow behaves under selected
+        failure conditions.
+      </p>
+
+      <p>
+        <strong>What do you get?</strong>
+        A proposed travel itinerary and an example of how the MCP
+        server's analysis and resilience-testing capabilities can
+        be applied to an AI workflow.
+      </p>
 
     </div>
 
+    <!-- Workflow and code -->
 
     <div class="travel-grid">
 
-
-      <!-- Workflow -->
+      <!-- Workflow diagram -->
 
       <div class="travel-flow">
 
@@ -763,9 +809,7 @@
           </small>
         </div>
 
-
         <div class="travel-arrow">↓</div>
-
 
         <div class="travel-tools">
 
@@ -795,9 +839,7 @@
 
         </div>
 
-
         <div class="travel-arrow">↓</div>
-
 
         <div class="travel-node">
 
@@ -811,9 +853,7 @@
 
         </div>
 
-
         <div class="travel-arrow">↓</div>
-
 
         <div class="travel-result">
 
@@ -835,9 +875,7 @@
 
         </div>
 
-
         <div class="travel-arrow">↓</div>
-
 
         <div class="travel-result chaos-result">
 
@@ -861,8 +899,7 @@
 
       </div>
 
-
-      <!-- Code Snippet -->
+      <!-- Original Python code snippet — preserved -->
 
       <div class="use-case-code">
 
@@ -878,7 +915,6 @@
 
         </div>
 
-
         <pre><code>results = {
     "request": "Plan a 3-day trip to Goa",
     "steps": [
@@ -889,7 +925,6 @@
     ],
 }</code></pre>
 
-
         <p class="code-note">
           Simulated workflow used to demonstrate MCP server analysis
           and resilience-testing capabilities.
@@ -897,166 +932,242 @@
 
       </div>
 
-
     </div>
 
   </div>
-
 </section>
+
 
 
 <!-- USE CASE 2: WORKFLOW FAULT TESTING -->
 <section id="workflow-fault-testing" class="section extra-use-case">
-  <div class="use-case-header">
-    <div>
-      <span class="section-eyebrow">USE CASE 02</span>
-      <h2>Workflow Fault Testing</h2>
+  <div class="section-container">
+
+    <div class="use-case-header">
+      <div>
+        <span class="section-eyebrow">USE CASE 02</span>
+        <h2>Workflow Fault Testing</h2>
+        <p>
+          Controlled fault experiments help teams investigate how an
+          agentic workflow behaves when selected failure conditions occur.
+          Agentic Chaos provides capabilities for discovering supported
+          faults and running configured experiments.
+        </p>
+      </div>
+      <span class="simulation-badge">Illustrative Workflow</span>
+    </div>
+
+    <div class="use-case-explanation">
+      <h3>How It Works</h3>
+
       <p>
-        Explore how controlled failures can help evaluate workflow
-        resilience using Agentic Chaos capabilities.
+        <strong>Step 1 — Identify available faults:</strong>
+        Inspect the fault scenarios supported by the configured
+        Agentic Chaos integration.
+      </p>
+
+      <p>
+        <strong>Step 2 — Run an experiment:</strong>
+        Select an appropriate fault scenario and execute a controlled
+        experiment using the required configuration.
+      </p>
+
+      <p>
+        <strong>Step 3 — Review the results:</strong>
+        Examine the returned output to investigate possible failure
+        points and understand workflow behavior.
+      </p>
+
+      <p>
+        <strong>Outcome:</strong>
+        Evidence that can help a team assess workflow resilience
+        and identify areas for further investigation.
       </p>
     </div>
-    <span class="simulation-badge">Illustrative Workflow</span>
-  </div>
 
-  <div class="travel-grid">
-    <div class="travel-flow">
-      <div class="travel-node">
-        <span class="node-number">01</span>
-        <div>
-          <strong>Identify Available Faults</strong>
-          <p>Inspect the fault scenarios available for testing.</p>
+    <div class="travel-grid">
+      <div class="travel-flow">
+
+        <div class="travel-node">
+          <span class="node-number">01</span>
+          <div>
+            <strong>Identify Available Faults</strong>
+            <p>Inspect supported fault scenarios.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="travel-arrow">↓</div>
+        <div class="travel-arrow">↓</div>
 
-      <div class="travel-node">
-        <span class="node-number">02</span>
-        <div>
-          <strong>Run a Controlled Experiment</strong>
-          <p>Execute a selected fault experiment against a test workflow.</p>
+        <div class="travel-node">
+          <span class="node-number">02</span>
+          <div>
+            <strong>Run a Controlled Experiment</strong>
+            <p>Execute a selected experiment against a test workflow.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="travel-arrow">↓</div>
+        <div class="travel-arrow">↓</div>
 
-      <div class="travel-node">
-        <span class="node-number">03</span>
-        <div>
-          <strong>Review the Results</strong>
-          <p>Examine the available output and identify possible failure points.</p>
+        <div class="travel-node">
+          <span class="node-number">03</span>
+          <div>
+            <strong>Review the Results</strong>
+            <p>Inspect the experiment output and possible failure points.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="travel-result">
-        <span class="result-icon">✓</span>
-        <div>
-          <strong>Resilience Review</strong>
-          <p>Use the experiment evidence to understand workflow behaviour.</p>
+        <div class="travel-result">
+          <span class="result-icon">✓</span>
+          <div>
+            <strong>Resilience Review</strong>
+            <p>Use the available evidence to understand workflow behavior.</p>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="use-case-terminal">
-      <div class="code-header">
-        <span>Agentic Chaos · Example</span>
-        <span class="terminal-status">DEMO</span>
       </div>
-      <pre><code># Illustrative MCP tool sequence
 
+      <div class="use-case-terminal">
+        <div class="code-header">
+          <span>Agentic Chaos · Example</span>
+          <span class="terminal-status">DEMO</span>
+        </div>
+
+        <pre><code># 1. Identify available fault scenarios
 chaos.list_faults()
 
-# Select an appropriate test scenario
-# and review its requirements.
+# 2. Run a controlled fault experiment
+chaos.run_experiment(...)</code></pre>
 
-chaos.run_experiment(...)
-
-# Inspect the returned experiment results.
-# Actual inputs depend on the tool schema.</code></pre>
-      <p class="terminal-note">
-        Demonstration concept. Available faults, required inputs,
-        and experiment results depend on the configured MCP server.
-      </p>
+        <p class="terminal-note">
+          The actual fault scenarios, required inputs, and results
+          depend on the configured MCP server and tool schemas.
+        </p>
+      </div>
     </div>
+
   </div>
 </section>
 
 
+
+
 <!-- USE CASE 3: AI EVALUATION AND RELEASE GATE -->
 <section id="ai-evaluation-release-gate" class="section extra-use-case">
-  <div class="use-case-header">
-    <div>
-      <span class="section-eyebrow">USE CASE 03</span>
-      <h2>AI Evaluation and Release Gate</h2>
+  <div class="section-container">
+
+    <div class="use-case-header">
+      <div>
+        <span class="section-eyebrow">USE CASE 03</span>
+        <h2>AI Evaluation and Release Gate</h2>
+        <p>
+          Before releasing an updated AI workflow, teams can analyze
+          its behavior, compare baseline and candidate runs, and review
+          evaluation evidence against their release requirements.
+        </p>
+      </div>
+      <span class="simulation-badge">Illustrative Workflow</span>
+    </div>
+
+    <div class="use-case-explanation">
+      <h3>How It Works</h3>
+
       <p>
-        Illustrate how workflow analysis, run comparisons, and audit
-        evidence can support an AI release-readiness review.
+        <strong>Step 1 — Analyze workflow behavior:</strong>
+        Examine an available workflow run using AgenticLens analysis
+        capabilities.
+      </p>
+
+      <p>
+        <strong>Step 2 — Compare runs:</strong>
+        Compare a baseline run with a candidate run to inspect
+        differences in their available results.
+      </p>
+
+      <p>
+        <strong>Step 3 — Review service-level objectives:</strong>
+        Inspect the available SLO summary to assess relevant
+        service-level indicators.
+      </p>
+
+      <p>
+        <strong>Step 4 — Generate audit evidence:</strong>
+        Produce an audit report and review the available evidence
+        against the team's release criteria.
+      </p>
+
+      <p>
+        <strong>Outcome:</strong>
+        Structured evidence that helps a team evaluate release readiness
+        and make an informed release decision.
       </p>
     </div>
-    <span class="simulation-badge">Illustrative Workflow</span>
-  </div>
 
-  <div class="travel-grid">
-    <div class="travel-flow">
-      <div class="travel-node">
-        <span class="node-number">01</span>
-        <div>
-          <strong>Analyze the Workflow</strong>
-          <p>Review workflow behaviour using available analysis capabilities.</p>
+    <div class="travel-grid">
+      <div class="travel-flow">
+
+        <div class="travel-node">
+          <span class="node-number">01</span>
+          <div>
+            <strong>Analyze the Workflow</strong>
+            <p>Review workflow behavior using available analysis capabilities.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="travel-arrow">↓</div>
+        <div class="travel-arrow">↓</div>
 
-      <div class="travel-node">
-        <span class="node-number">02</span>
-        <div>
-          <strong>Compare Runs and Metrics</strong>
-          <p>Inspect available comparisons and service-level indicators.</p>
+        <div class="travel-node">
+          <span class="node-number">02</span>
+          <div>
+            <strong>Compare Baseline and Candidate</strong>
+            <p>Inspect differences between available runs and metrics.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="travel-arrow">↓</div>
+        <div class="travel-arrow">↓</div>
 
-      <div class="travel-node">
-        <span class="node-number">03</span>
-        <div>
-          <strong>Review Evaluation Evidence</strong>
-          <p>Examine audit information against predefined release criteria.</p>
+        <div class="travel-node">
+          <span class="node-number">03</span>
+          <div>
+            <strong>Review Evaluation Evidence</strong>
+            <p>Examine SLO summaries and audit information.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="travel-result">
-        <span class="result-icon">✓</span>
-        <div>
-          <strong>Release Readiness Review</strong>
-          <p>A team can use the evidence to make a release decision.</p>
+        <div class="travel-result">
+          <span class="result-icon">✓</span>
+          <div>
+            <strong>Release Readiness Review</strong>
+            <p>Use the evidence to support the team's release decision.</p>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="use-case-terminal">
-      <div class="code-header">
-        <span>AgenticLens · Example</span>
-        <span class="terminal-status">DEMO</span>
       </div>
-      <pre><code># Illustrative evaluation sequence
 
+      <div class="use-case-terminal">
+        <div class="code-header">
+          <span>AgenticLens · Example</span>
+          <span class="terminal-status">DEMO</span>
+        </div>
+
+        <pre><code># 1. Analyze workflow behavior
 lens.analyze_workflow(...)
 
+# 2. Compare baseline and candidate runs
 lens.compare_runs(...)
 
+# 3. Review service-level objectives
 lens.slo_summary(...)
 
-lens.audit_report(...)
+# 4. Generate audit evidence
+lens.audit_report(...)</code></pre>
 
-# Review the returned evidence against
-# your team's release criteria.</code></pre>
-      <p class="terminal-note">
-        This is an example evaluation process, not a claim that the MCP
-        server provides a built-in release-gate decision tool.
-      </p>
+        <p class="terminal-note">
+          These tools provide evidence for evaluation. The team applies
+          its own release criteria; the sequence is not a built-in
+          automatic release approval mechanism.
+        </p>
+      </div>
     </div>
+
   </div>
 </section>

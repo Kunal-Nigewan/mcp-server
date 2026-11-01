@@ -6,8 +6,14 @@ from pathlib import Path
 
 import pytest
 
+from deep_agentic_core_mcp import __version__
 from deep_agentic_core_mcp.server import _TOOL_DISPATCH, TOOLS, server
 from deep_agentic_core_mcp.services import session as session_service
+
+
+def test_initialization_reports_package_version():
+    assert server.create_initialization_options().server_version == __version__
+
 
 ROOT = Path(__file__).resolve().parents[2]
 SPEC_V04 = ROOT / "ai-operations-spec" / "specification" / "v0.4" / "examples"
@@ -315,6 +321,38 @@ async def test_handle_call_tool_run_experiment_honors_timeout() -> None:
 
 
 @pytest.mark.asyncio
+async def test_handle_call_tool_run_experiment_disabled_under_remote_transport(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from deep_agentic_core_mcp.server import handle_call_tool
+
+    monkeypatch.setenv("DEEP_AGENTIC_CORE_MCP_REMOTE", "1")
+    result = await handle_call_tool(
+        "chaos.run_experiment",
+        {"script": CHAOS_TARGET_SCRIPT, "faults": ["silent_degradation"]},
+    )
+    payload = json.loads(result[0].text)
+    assert payload["ok"] is False
+    assert "remote transport" in payload["error"]
+
+
+@pytest.mark.asyncio
+async def test_handle_call_tool_run_experiment_remote_allowed_opt_in(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from deep_agentic_core_mcp.server import handle_call_tool
+
+    monkeypatch.setenv("DEEP_AGENTIC_CORE_MCP_REMOTE", "1")
+    monkeypatch.setenv("DEEP_AGENTIC_CORE_MCP_ALLOW_REMOTE_CHAOS", "1")
+    result = await handle_call_tool(
+        "chaos.run_experiment",
+        {"script": CHAOS_TARGET_SCRIPT, "faults": ["silent_degradation"]},
+    )
+    payload = json.loads(result[0].text)
+    assert payload["ok"] is True
+
+
+@pytest.mark.asyncio
 async def test_handle_call_tool_run_experiment_rejects_path_outside_workspace() -> None:
     from deep_agentic_core_mcp.server import handle_call_tool
 
@@ -368,8 +406,13 @@ async def test_handle_call_tool_sidecar_status() -> None:
     if _sidecar_available():
         assert payload["ok"] is True
         assert payload["package"] == "agentic-sidecar"
-        assert payload["package_status"] == "scaffold"
-        assert payload["runtime_ready"] is False
+        from deep_agentic_core_mcp.adapters.agentic_sidecar import probe
+
+        installed = probe()
+        assert payload["package_status"] == installed["package_status"]
+        assert payload["runtime_ready"] is installed["runtime_ready"]
+        assert payload["runtime_connected"] is False
+        assert payload["mcp_runtime_controls"] is False
     else:
         assert payload["ok"] is False
         assert "error" in payload

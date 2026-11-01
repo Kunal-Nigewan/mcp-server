@@ -1,0 +1,18 @@
+# Standalone Git-backed build: no adjacent repositories are required.
+FROM python:3.12-slim
+WORKDIR /app
+COPY pyproject.toml README.md ./
+COPY src ./src
+# Pairs: Lens 0.10.0 (diagnosis, suites, ModelFit, advisory routing),
+# Chaos 0.8.0 (AIOS run export; extension carries call counts and workflow summaries).
+# Chaos is installed for its exporter and fault catalog only; HTTP always
+# rejects chaos.run_experiment, so no target script is ever executed here.
+RUN pip install --no-cache-dir ".[http]" "agenticlens==0.10.0" "agentic-chaos==0.8.0"
+COPY scripts/fetch_schema_assets.py /tmp/fetch_schema_assets.py
+RUN python /tmp/fetch_schema_assets.py /opt/workspace/ai-operations-spec
+RUN useradd --create-home --uid 10001 mcp
+USER mcp
+ENV DEEP_AGENTIC_CORE_MCP_HTTP_HOST=0.0.0.0 \
+    DEEP_AGENTIC_CORE_MCP_WORKSPACE_ROOT=/opt/workspace
+EXPOSE 10000
+CMD ["deep-agentic-core-mcp-http"]
